@@ -11,6 +11,11 @@
 		30C17BCE2B6028F900BE4521 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BCD2B6028F900BE4521 /* ContentView.swift */; };
 		30C17BD02B6028FB00BE4521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C17BCF2B6028FB00BE4521 /* Assets.xcassets */; };
 		30C17BD32B6028FB00BE4521 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C17BD22B6028FB00BE4521 /* Preview Assets.xcassets */; };
+		30C17BDA2B602AF600BE4521 /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BD92B602AF600BE4521 /* BluetoothViewModel.swift */; };
+		30C17BDC2B602B1300BE4521 /* PeripheralProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BDB2B602B1300BE4521 /* PeripheralProtocol.swift */; };
+		30C17BDE2B602B4100BE4521 /* getHueFromPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */; };
+		30C17BE02B602BED00BE4521 /* PeripheralNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */; };
+		30C17BE22B602C0800BE4521 /* ColorPickerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		30C17BCD2B6028F900BE4521 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30C17BCF2B6028FB00BE4521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30C17BD22B6028FB00BE4521 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		30C17BD92B602AF600BE4521 /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
+		30C17BDB2B602B1300BE4521 /* PeripheralProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralProtocol.swift; sourceTree = "<group>"; };
+		30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getHueFromPoint.swift; sourceTree = "<group>"; };
+		30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralNameView.swift; sourceTree = "<group>"; };
+		30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,11 @@
 				30C17BCD2B6028F900BE4521 /* ContentView.swift */,
 				30C17BCF2B6028FB00BE4521 /* Assets.xcassets */,
 				30C17BD12B6028FB00BE4521 /* Preview Content */,
+				30C17BD92B602AF600BE4521 /* BluetoothViewModel.swift */,
+				30C17BDB2B602B1300BE4521 /* PeripheralProtocol.swift */,
+				30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */,
+				30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */,
+				30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */,
 			);
 			path = "led-controller";
 			sourceTree = "<group>";
@@ -138,7 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C17BCE2B6028F900BE4521 /* ContentView.swift in Sources */,
+				30C17BDE2B602B4100BE4521 /* getHueFromPoint.swift in Sources */,
+				30C17BDC2B602B1300BE4521 /* PeripheralProtocol.swift in Sources */,
+				30C17BE22B602C0800BE4521 /* ColorPickerImageView.swift in Sources */,
+				30C17BE02B602BED00BE4521 /* PeripheralNameView.swift in Sources */,
 				30C17BCC2B6028F900BE4521 /* led_controllerApp.swift in Sources */,
+				30C17BDA2B602AF600BE4521 /* BluetoothViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +295,8 @@
 				DEVELOPMENT_TEAM = 695367Z85M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +326,8 @@
 				DEVELOPMENT_TEAM = 695367Z85M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

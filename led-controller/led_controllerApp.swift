@@ -11,7 +11,9 @@ import SwiftUI
 struct led_controllerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let bluetoothViewModel = BluetoothViewModel()
+            ContentView(bluetoothViewModel: bluetoothViewModel)
+                .environment(\.colorScheme, .light)
         }
     }
 }
