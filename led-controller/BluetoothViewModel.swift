@@ -2,6 +2,7 @@ import CoreBluetooth
 
 let serviceUUID = CBUUID(string: "4fafc201-1fb5-459e-8fcc-c5c9c331914b")
 let hueCharacteristicUUID = CBUUID(string: "beb5483e-36e1-4688-b7f5-ea07361b26a8")
+let brighnessCharacteristicUUID = CBUUID(string: "04cc261b-5870-4abc-9f08-ab1ab4b90d6e")
 
 class BluetoothViewModel: NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
@@ -9,6 +10,7 @@ class BluetoothViewModel: NSObject, ObservableObject {
     @Published var peripherals: [PeripheralProtocol] = []
     
     var hueCharacteristic: CBCharacteristic?
+    var brightnessCharacteristic: CBCharacteristic?
     
     override init() {
         super.init()
@@ -71,13 +73,21 @@ extension BluetoothViewModel: CBPeripheralDelegate {
         guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
             if characteristic.uuid == hueCharacteristicUUID {
-                
                 print("Found the hue characteristic");
                 if !characteristic.properties.contains(.writeWithoutResponse) {
                     print("hueCharacteristic has the wrong properties")
                     return
                 }
                 hueCharacteristic = characteristic
+            }
+            
+            if characteristic.uuid == brighnessCharacteristicUUID {
+                print("Found the brightness characteristic");
+                if !characteristic.properties.contains(.writeWithoutResponse) {
+                    print("brightnessCharacteristic has the wrong properties")
+                    return
+                }
+                brightnessCharacteristic = characteristic
             }
         }
     }

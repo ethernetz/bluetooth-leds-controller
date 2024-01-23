@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var renderedImage = UIImage(named: "rainbow")
     @State private var showingDialog = false
     @State private var hue: CGFloat?
+    @State private var brightness: Double = 2.0
     
     var body: some View {
         VStack {
@@ -16,9 +17,22 @@ struct ContentView: View {
             
             if let image = renderedImage, bluetoothViewModel.connectedPeripheral != nil {
                 ColorPickerImageView(uiImage: image, onColorChange: { newHue in
-                    handleHueChange(newHue)
+                    hue = newHue
+                    sendHueToPeripheral(newHue)
                 })
+                
+                Slider(value: $brightness, in: 0...255, step: 1)
+                    .padding()
+                    .onChange(of: brightness) {                        sentBrightnessToPeripheral(Int(brightness))
+                    }
+                    .accentColor(
+                        Color(hue: hue ?? 100, saturation: 0.75, brightness: 1)
+                    )
+                
             }
+            
+            
+            
             
             Spacer()
         }
@@ -38,12 +52,14 @@ struct ContentView: View {
         .background(Color.black)
     }
     
-    private func handleHueChange(_ newHue: CGFloat?) {
+    private func sendHueToPeripheral(_ newHue: CGFloat?) {
         guard let connectedPeripheral = bluetoothViewModel.connectedPeripheral,
               let hueCharacteristic = bluetoothViewModel.hueCharacteristic,
               let unwrappedHue = newHue else {
             return
         }
+        
+        hue = unwrappedHue
         
         // Convert CGFloat to Int (0 to 255)
         let hueInt = Int(unwrappedHue * 255)
@@ -54,6 +70,18 @@ struct ContentView: View {
         // Write the data to the characteristic
         connectedPeripheral.writeValue(dataToWrite, for: hueCharacteristic, type: .withoutResponse)
     }
+    
+    private func sentBrightnessToPeripheral(_ newBrightness: Int) {
+        guard let connectedPeripheral = bluetoothViewModel.connectedPeripheral,
+              let brightnessCharacteristic = bluetoothViewModel.brightnessCharacteristic else {
+            return
+        }
+        
+        let dataToWrite = Data([UInt8(newBrightness)])
+        
+        connectedPeripheral.writeValue(dataToWrite, for: brightnessCharacteristic, type: .withoutResponse)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
