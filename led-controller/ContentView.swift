@@ -6,6 +6,8 @@ struct ContentView: View {
     @State private var showingDialog = false
     @State private var hue: CGFloat?
     @State private var brightness: Double = 2.0
+    @State private var selectedMode: Int?
+    let modeNames = ["Solid", "Twinkle", "Move"]
     
     var body: some View {
         VStack {
@@ -23,16 +25,24 @@ struct ContentView: View {
                 
                 Slider(value: $brightness, in: 0...255, step: 1)
                     .padding()
-                    .onChange(of: brightness) {                        sentBrightnessToPeripheral(Int(brightness))
+                    .onChange(of: brightness) {                        sendBrightnessToPeripheral(Int(brightness))
                     }
                     .accentColor(
                         Color(hue: hue ?? 100, saturation: 0.75, brightness: 1)
                     )
                 
+                HStack {
+                    ForEach(0..<modeNames.count, id: \.self) { index in
+                        ModeCard(modeName: modeNames[index], isSelected: index == selectedMode, selectedColor: Color(hue: hue ?? 100, saturation: 0.75, brightness: 1)) {
+                            selectedMode = index
+                            sendModeToPeripheral(index)
+                        }
+                    }
+
+                }
+                .padding()
+                
             }
-            
-            
-            
             
             Spacer()
         }
@@ -71,7 +81,7 @@ struct ContentView: View {
         connectedPeripheral.writeValue(dataToWrite, for: hueCharacteristic, type: .withoutResponse)
     }
     
-    private func sentBrightnessToPeripheral(_ newBrightness: Int) {
+    private func sendBrightnessToPeripheral(_ newBrightness: Int) {
         guard let connectedPeripheral = bluetoothViewModel.connectedPeripheral,
               let brightnessCharacteristic = bluetoothViewModel.brightnessCharacteristic else {
             return
@@ -82,6 +92,17 @@ struct ContentView: View {
         connectedPeripheral.writeValue(dataToWrite, for: brightnessCharacteristic, type: .withoutResponse)
     }
     
+    private func sendModeToPeripheral(_ newMode: Int) {
+        guard let connectedPeripheral = bluetoothViewModel.connectedPeripheral,
+              let modeCharacteristic = bluetoothViewModel.modeCharacteristic else {
+            return
+        }
+        
+        let dataToWrite = Data([UInt8(newMode)])
+        
+        connectedPeripheral.writeValue(dataToWrite, for: modeCharacteristic, type: .withoutResponse)
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -89,3 +110,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(bluetoothViewModel: .preview)
     }
 }
+

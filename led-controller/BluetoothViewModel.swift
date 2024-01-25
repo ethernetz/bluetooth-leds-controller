@@ -3,6 +3,7 @@ import CoreBluetooth
 let serviceUUID = CBUUID(string: "4fafc201-1fb5-459e-8fcc-c5c9c331914b")
 let hueCharacteristicUUID = CBUUID(string: "beb5483e-36e1-4688-b7f5-ea07361b26a8")
 let brighnessCharacteristicUUID = CBUUID(string: "04cc261b-5870-4abc-9f08-ab1ab4b90d6e")
+let modeCharacteristicUUID = CBUUID(string: "0db05672-2268-4018-9662-255dc67c3473")
 
 class BluetoothViewModel: NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
@@ -11,6 +12,7 @@ class BluetoothViewModel: NSObject, ObservableObject {
     
     var hueCharacteristic: CBCharacteristic?
     var brightnessCharacteristic: CBCharacteristic?
+    var modeCharacteristic: CBCharacteristic?
     
     override init() {
         super.init()
@@ -88,6 +90,15 @@ extension BluetoothViewModel: CBPeripheralDelegate {
                     return
                 }
                 brightnessCharacteristic = characteristic
+            }
+            
+            if characteristic.uuid == modeCharacteristicUUID {
+                print("Found the mode characteristic");
+                if !characteristic.properties.contains(.writeWithoutResponse) {
+                    print("modeCharacteristic has the wrong properties")
+                    return
+                }
+                modeCharacteristic = characteristic
             }
         }
     }

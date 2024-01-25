@@ -16,6 +16,7 @@
 		30C17BDE2B602B4100BE4521 /* getHueFromPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */; };
 		30C17BE02B602BED00BE4521 /* PeripheralNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */; };
 		30C17BE22B602C0800BE4521 /* ColorPickerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */; };
+		30C78BAA2B61E18100EE1C4F /* ModeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BA92B61E18100EE1C4F /* ModeCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getHueFromPoint.swift; sourceTree = "<group>"; };
 		30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralNameView.swift; sourceTree = "<group>"; };
 		30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerImageView.swift; sourceTree = "<group>"; };
+		30C78BA92B61E18100EE1C4F /* ModeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				30C17BDD2B602B4100BE4521 /* getHueFromPoint.swift */,
 				30C17BDF2B602BED00BE4521 /* PeripheralNameView.swift */,
 				30C17BE12B602C0800BE4521 /* ColorPickerImageView.swift */,
+				30C78BA92B61E18100EE1C4F /* ModeCard.swift */,
 			);
 			path = "led-controller";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C78BAA2B61E18100EE1C4F /* ModeCard.swift in Sources */,
 				30C17BCE2B6028F900BE4521 /* ContentView.swift in Sources */,
 				30C17BDE2B602B4100BE4521 /* getHueFromPoint.swift in Sources */,
 				30C17BDC2B602B1300BE4521 /* PeripheralProtocol.swift in Sources */,
